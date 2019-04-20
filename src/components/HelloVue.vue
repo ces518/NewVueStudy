@@ -5,7 +5,7 @@
     <span v-bind:title="message">zz</span>
     <p v-if="like">좋아요를 눌러주세요.</p>
     <ol>
-      <li v-for="drink in drinks">
+      <li v-for="drink in drinks" v-bind:key="drink">
         {{ drink.text }}, {{ drink.kind }}
       </li>
     </ol>

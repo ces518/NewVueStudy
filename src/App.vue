@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// 이파일을 App 
+// 이파일을 App
 export default {
   name: 'App'
 }
