@@ -67,17 +67,24 @@ export default {
 - v-on:이벤트명="함수명"
   - 해당 이벤트 에 메서드를 바인딩하여 호출 한다.
 
+- DOM 을 조작하지않고 상태를 업데이트 한다.
+- 모든 DOM 조작은 Vue에 의해 처리되며 , 작성한 코드는 기본로직에만 초점을 맞춘다.
+
+- v-model="data변수명"
+  - 해당 변수에 해당하는 모델을 양방향으로 바인딩 해준다.
+
 ```javascript
 <template>
   <div class="hello">
     <p>{{ message }}</p>
+    <input v-model="message"/>
     <button v-on:click="reverse">메세지 뒤집기</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'on',
+  name: 'model',
   data () {
     return {
       message: '안녕하세요.'
