@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloVue from '@/components/HelloVue'
 import On from '@/components/on'
 import Model from '@/components/model'
+import Template from '@/components/template'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/model',
       name: 'Model',
       component: Model
+    },
+    {
+      path: '/template',
+      name: 'Template',
+      component: Template
     }
   ]
 })
