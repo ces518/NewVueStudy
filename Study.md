@@ -141,3 +141,18 @@ export default {
 ```javascript
 <button v-bind:disabled="isDisabled">버튼</button>
 ```
+
+- javascript 표현식
+  - Vue js 는 모든 데이터 바인딩 내에서 javascript 표현식의 기능을 지원한다.
+  - 아래의 표현식은 vue 인스턴스 데이터 범위 내에서 javascript로 계산된다.
+  - 제약 사항은 각 바인딩 당 하나의 단일 표현식만 가능하다.
+```javascript
+    {{ 1 + 1 }}
+    {{ isDisabled ? 'YES' : 'NO' }}
+    <!-- 아래는 표현식이 아님-->
+    {{ var a = 'test' }}
+    <!-- if문은 동작하지않는다. 삼항 연산자를 사용할것. -->
+    {{ if(isDisabled) { return 'NO'} }}
+```
+  - 템플릿 표현식은 샌드박스 처리되며 , javascript 전역객체 (Math,Date...) 등과 같은것들만 접근이 가능하다.
+  

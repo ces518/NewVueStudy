@@ -5,6 +5,8 @@
     <p>HTML 출력 : <span v-html="realHTML"></span></p>
     <div v-bind:class="dynamicClass" v-on:click="changeClass">v-bind 동적클래스</div>
     <button v-bind:disabled="isDisabled">버튼</button>
+    {{ 1 + 1 }}
+    {{ isDisabled ? 'YES' : 'NO' }}
   </div>
 </template>
 
@@ -16,7 +18,7 @@ export default {
       message: '안녕하세요.',
       realHTML: '<em style="color: red;">EM태그 사용</em>',
       dynamicClass: 'bear',
-      isDisabled: undefined
+      isDisabled: true
     }
   },
   methods: {
