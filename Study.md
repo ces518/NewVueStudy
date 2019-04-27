@@ -136,3 +136,8 @@ export default {
 <div v-bind:class="dynamicClass" v-on:click="changeClass">v-bind 동적클래스</div>
 ```  
   
+  - boolean 값을 이용할때는 다르게 동작한다.
+  - 해당 boolean 값이 false , undefined일경우 에는 해당 속성이 태그에 포함되지않은 채로 랜더링된다.
+```javascript
+<button v-bind:disabled="isDisabled">버튼</button>
+```
