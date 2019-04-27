@@ -110,5 +110,21 @@ export default {
   v-once 디렉티브를 활용하면 데이터가 업데이트 되지않는 일회성 보간이지만
   같은 노드의 바인딩에도 영향을 미친다.
 ```javascript
-<p>{{ message }}</p>
+  <div class="hello">
+    <p v-once> 수정불가: {{ message }}</p>
+    <button type="button" v-on:click="changeMessage">메시지 변경</button>
+  </div>
 ```
+
+- 원시 HTML
+  - Mustache 태그는 해당 하는 데이터를 HTML이 아닌 일반 텍스트로 데이터를 해석한다.
+  - 실제 HTML을 출력하려면 v-html디렉티브를 사용해야한다.
+  - span 태그의 내용은 realHTML의 내용으로 대체된다.
+  - 이때 데이터 바인딩은 무시된다.
+  - Vue는 문자열 기반 템플릿 엔진이 아니기때문에 v-html을 통해 템플릿사용이 불가능하다.
+  - 컴포넌트는 UI 재사용 및 구성을 위한 기본단위로 사용해야한다.
+  - * 웹사이트에서 임의의 HTML을 사용하면 XSS 취약점이 발생하므로 지양해야함.
+```javascript
+<p>HTML 출력 : <span v-html="realHTML"></span></p>
+```
+  
