@@ -128,3 +128,11 @@ export default {
 <p>HTML 출력 : <span v-html="realHTML"></span></p>
 ```
   
+- 속성
+  - Mustache는 HTML속성에서 사용할수 없다. 대신 v-bind:속성을 사용해야한다.
+  - v-bind:class로 인해 dynamicClass모델과 바인딩되고 , v-on:click이벤트 발생시 
+  - div의 클래스 속성이 동적으로 변한다.
+```javascript
+<div v-bind:class="dynamicClass" v-on:click="changeClass">v-bind 동적클래스</div>
+```  
+  
