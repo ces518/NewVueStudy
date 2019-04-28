@@ -156,3 +156,52 @@ export default {
 ```
   - 템플릿 표현식은 샌드박스 처리되며 , javascript 전역객체 (Math,Date...) 등과 같은것들만 접근이 가능하다.
   
+
+- 디렉티브
+  - 디렉티브는 v- 접두사가 붙어 있는 특수속성이다.
+  - 디렉티브 속성은 단일 Javascript 표현식사용이 가능하다. (v-for 는 예외)
+  - 디렉티브 의 역할은 표현식의 값이 변경될때 해당 값의 변화를 DOM에 적용 하는것이다.
+
+```javascript
+<div v-if="isVisable">내가 보이나요</div>
+``` 
+
+- v-if 디렉티브는 isVisable 의 boolean값에 의해 div 엘리먼트가 랜더링 혹은 제거 된다.
+
+
+- 전달 인자
+  - 일부 디렉티브는 콜론으로 표시되는 '전달인자' 를 사용할 수 있다.
+  - 예로 v-bind 디렉티브는 반응적으로 html 속성을 갱싱하는데 사용된다.
+ 
+```javascript
+<a v-bind:href="URL">이동</a>
+```
+
+- 여기서 href 는 전달인자 이다.
+- href의 속성값을 URL의 값에 바인드한다.
+
+
+
+- 수식어
+  - 수식어는 . (점) 으로 표시되는 특수 접미사로 , 디렉티브를 특별한 방법으로 바인딩 한다.
+  - 예로 .prevent 수식어는 트리거된 이벤트에서 event.preventDefault()를 호출해야함을 디렉티브에게 알려준다.
+  
+```javascript
+<a v-on:click.prevent="changeMessage">preventDefault()</a>
+```
+
+
+- 약어
+  - vuejs 에서 자주 사용되는 디렉티브인 v-bind 와 v-on 디렉티브에 대한 약어를 제공한다.
+  
+```javascript
+<!-- 기존 방식 -->
+<a v-bind:href="URL">이동</a>
+<!-- 약어 방식 -->
+<a :href="URL">이동</a>
+
+<!-- 기존 방식 -->
+<a v-on:click.prevent="changeMessage">preventDefault()</a>
+<!-- 약어 방식 -->
+<a @click.prevent="changeMessage">preventDefault()</a>
+```  

@@ -7,6 +7,11 @@
     <button v-bind:disabled="isDisabled">버튼</button>
     {{ 1 + 1 }}
     {{ isDisabled ? 'YES' : 'NO' }}
+
+    <div v-if="isVisable">내가 보이나</div>
+    <a v-bind:href="URL">이동</a>
+
+    <a v-on:click.prevent="changeMessage">preventDefault()</a>
   </div>
 </template>
 
@@ -18,7 +23,9 @@ export default {
       message: '안녕하세요.',
       realHTML: '<em style="color: red;">EM태그 사용</em>',
       dynamicClass: 'bear',
-      isDisabled: true
+      isDisabled: true,
+      isVisable: false,
+      URL: 'http://www.naver.com'
     }
   },
   methods: {
