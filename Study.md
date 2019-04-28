@@ -205,3 +205,93 @@ export default {
 <!-- 약어 방식 -->
 <a @click.prevent="changeMessage">preventDefault()</a>
 ```  
+
+
+- Computed 와 Watch
+  
+   - Computed 속성
+    - 템플릿 내에 표현식을 사용하지만 편리하지만 , 연산이 장황 할 수록 유지보수하기 어려워진다.
+    - 복잡한 로직이라면 반드시 computed속성을 사용 해야한다.
+    
+```javascript
+<template>
+  <div class="hello">
+    <p> 원본 메세지 : {{ message }}</p>
+    <p> 역순으로 표시한 메시지 : {{ reversedMessage }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'computed',
+  data () {
+    return {
+      message: '안녕하세요.'
+    }
+  },
+  computed: {
+    reversedMessage () {
+      // 여기서 this는 무조건 vue 객체를 가리킨다.
+      return this.message.split('').reverse().join('')
+    }
+  }
+}
+</script>
+```
+
+- Computed 와 Method의 차이
+  - Computed 속성은 매번 연산을 새로 진행하는것이 아니라 캐싱해 두었다가
+  - 재 호출시 캐싱된 결과를 리턴해준다.
+  - 성능적인 이점을 가져온다.
+  - Date.now()처럼 아무 곳에도 의존하지 않는 computed 속성의 경우 절대로 업데이트되지 않는다.
+  
+
+
+- Computed 속성과 Watch 속성
+  - vuejs에는 Vue 인스턴스의 데이터를 감시하고 , 데이터 변경시 콜백되는 watch 속성을 제공한다.
+  - input의 데이터가 변경되면 isValid의 값이 false로 변경되어 중복검사를 다시 실행해야한다.
+```javascript
+<template>
+  <div class="hello">
+    <p> 원본 메세지 : {{ message }}</p>
+    <p> 역순으로 표시한 메시지 : {{ reversedMessage }}</p>
+    <input v-model="data"/>
+    <button @click="validate">중복검사</button>
+    {{ isValid ? '중복검사완료' : '중복검사를 해주세요.' }}
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'computed',
+  data () {
+    return {
+      message: '안녕하세요.',
+      data: '초기 데이터',
+      isValid: false
+    }
+  },
+  computed: {
+    reversedMessage () {
+      // 여기서 this는 무조건 vue 객체를 가리킨다.
+      return this.message.split('').reverse().join('')
+    }
+  },
+  watch: {
+    data () {
+      this.isValid = false
+    }
+  },
+  methods: {
+    validate () {
+      this.isValid = true
+    }
+  }
+}
+</script>
+```
+
+- Computed 속성의 Setter 함수
+  - Computed 속성은 기본적으로 getter함수만 가지고 있지만 , 필요에 따라서 setter함수를 정의하여
+  사용할 수 있다.
+  
