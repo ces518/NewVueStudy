@@ -318,3 +318,85 @@ export default {
   - watch 속성을 사용하면 비동기 연산 을 수행하고, 자주 수행하는지 제한하고, 최종 응답을 얻을 때까지 중간 상태를 설정할 수 있습니다. 
   - Computed 속성은 이러한 기능을 수행할 수 없습니다. 
   
+
+- 클래스와 스타일 바인딩
+  - 데이터 바인딩은 엘리먼트의 클래스와 인라인 스타일을 조작하기위해 사용된다.
+  - v-bind속성을 사용해 처리할 수 있다.
+
+
+##### HTML 클래스 바인딩
+
+- 객체구문
+  - 클래스를 동적으로 전달하기위해 v-bind:class를 활용하여 객체에 전달 할 수 있다.
+```javascript
+<template>
+  <div class="hello">
+  // isActive의 true,false 값에 따라 active 클래스가 할당된다.
+    <div v-text="msg" v-bind:class="{active: isActive}"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'class',
+  data () {
+    return {
+      msg: '메시지',
+      isActive: true
+    }
+  }
+}
+</script>
+```
+  - v-bind:class에 할당된 객체가 반드시 인라인일 필요는없다.
+  - 인라인으로 바인딩 한 것과 같은결과로 랜더링되며 , computed속성으로도 같은 결과를 도출 할 수 있다.
+```javascript
+<div v-bind:class="classObj">안녕하세요</div>
+<script>
+export default {
+  name: 'class',
+  data () {
+    return {
+      msg: '메시지',
+      isActive: true,
+      classObj: {
+        active: true,
+        no_active: true
+      }
+    }
+  }
+}
+</script>
+```
+     
+- 배열구문
+  - v-bind:class에 배열을 전달하여 class를 지정 할 수 있다.
+```javascript
+<div v-bind:class="[activeClass,noActiveClass]">안녕하신가요?</div>
+<script>
+export default {
+  name: 'class',
+  data () {
+    return {
+      msg: '메시지',
+      isActive: true,
+      classObj: {
+        active: true,
+        no_active: true
+      },
+      activeClass: 'active',
+      noActiveClass: 'no_active'
+    }
+  }
+}
+</script>
+```
+
+
+##### HTML 스타일 바인딩
+
+- 객체 구문
+  - v-bind:style 은 매우 직설적이다.
+  - css처럼 보이지만 , javascript 객체이다.
+  - 속성명에 camelCase 와 kebab-case (따옴표 같이사용해야함) 을 사용할 수 있다.
+  
