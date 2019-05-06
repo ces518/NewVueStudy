@@ -294,4 +294,27 @@ export default {
 - Computed 속성의 Setter 함수
   - Computed 속성은 기본적으로 getter함수만 가지고 있지만 , 필요에 따라서 setter함수를 정의하여
   사용할 수 있다.
+  - setter함수를 사용하면 해당 속성이 변경될때마다 콜백함수로 동작한다.
+```javascript
+  computed: {
+    reversedMessage () {
+      // 여기서 this는 무조건 vue 객체를 가리킨다.
+      return this.message.split('').reverse().join('')
+    },
+    computedMessage: {
+      get () {
+        return this.msg
+      },
+      set (newValue) {
+        this.msg = newValue + '추가추가'
+      }
+    }
+  },
+```
+
+- Watch속성 
+  - 대부분의 경우에는 Computed속성이 적합하지만 , 감시자 속성이 필요 한 경우가 있다.
+  - watch 속성은 감시할 데이터를 지정하고 , 이에 대한 변경으로 비동기 또는 시간이 오래걸리는 조작을 사용할때 유용하다.
+  - watch 속성을 사용하면 비동기 연산 을 수행하고, 자주 수행하는지 제한하고, 최종 응답을 얻을 때까지 중간 상태를 설정할 수 있습니다. 
+  - Computed 속성은 이러한 기능을 수행할 수 없습니다. 
   
