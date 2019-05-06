@@ -399,4 +399,28 @@ export default {
   - v-bind:style 은 매우 직설적이다.
   - css처럼 보이지만 , javascript 객체이다.
   - 속성명에 camelCase 와 kebab-case (따옴표 같이사용해야함) 을 사용할 수 있다.
-  
+  - 인라인 바인딩 보다는 , 객체 바인딩을 통하여 템플릿을 깔끔하게 하는것이 좋다.
+```javascript
+<template>
+  <div class="hello">
+    <div v-bind:style="{ color: colorActive }">빨간</div>
+    <div v-bind:style="styleObj">곰</div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'style',
+  data () {
+    return {
+      msg: '메시지',
+      colorActive: 'red',
+      styleObj: {
+        color: 'red',
+        fontSize: '30px'
+      }
+    }
+  }
+}
+</script>
+```
