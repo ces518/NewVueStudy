@@ -424,3 +424,22 @@ export default {
 }
 </script>
 ```
+
+# 조건부 랜더링
+
+- v-if
+  - v-if 와 v-else 를 활용하여 조건부 랜더링이 가능하다.
+  - v-else는 v-if 또는 v-else-if 바로뒤에 있어야하며 조건이 필요없다.
+```javascript
+<div>
+  <div v-if="condition > 1">조건1</div>
+  <div v-else-if="condition > 2">조건2</div>
+</div>
+```
+
+- v-show
+  - 사용법은 v-if와 거의 일치한다.
+  - 차이점은 v-show는 항상 DOM에 랜더링되며, display속성이 토글된다.
+  
+일반적으로 v-if는 토글 비용이 크고, v-show는 초기 랜더링 비용이 크다.
+자주바뀌는 것이라면 v-show 런타임시 변하지않는다면 v-if를 사용할것.
